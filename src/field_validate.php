@@ -32,6 +32,7 @@ class field_validate{
         return new self($key);
     }
 
+
     public static function CUSTOM($custom_fields_array, $key){
         self::$method = 'CUSTOM';
         self::$custom_fields = $custom_fields_array;
