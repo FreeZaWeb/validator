@@ -17,6 +17,10 @@ class validator extends \stdClass {
 
     }
 
+    public static function TEST(){
+        echo 'test';
+    }
+
     public static function ALL_GET(array $fields_rules){
         self::$method = 'GET';
         return new self($fields_rules);
