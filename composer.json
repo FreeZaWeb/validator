@@ -3,6 +3,7 @@
   "description": "POST/GET/CUSTOM array validator",
   "license": "proprietary",
   "type": "library",
+  "minimum-stability": "stable",
   "version": "1.0.9",
   "authors": [
     {
