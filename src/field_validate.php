@@ -291,6 +291,7 @@ class field_validate{
     }
 
 
+
     public function domain(){
         $this->input = filter_var($this->input, FILTER_VALIDATE_DOMAIN, FILTER_FLAG_HOSTNAME);
         return $this;
