@@ -2,6 +2,7 @@
 
 class field_validate{
 
+
     protected static $_instant = null;
     protected static $method = null;
     protected static $custom_fields = [];
