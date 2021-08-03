@@ -2,5 +2,4 @@
 /vendor
 
 .gitignore
-composer.json
 composer.lock
