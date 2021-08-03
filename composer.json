@@ -1,0 +1,17 @@
+{
+  "name": "yeezycore/validator",
+  "description": "post/get/custom validator",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Max FreeZa",
+      "email": "freezaweb@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.4.5"
+  },
+  "autoload": {
+    "classmap": ["src"]
+  }
+}
