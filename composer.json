@@ -2,6 +2,7 @@
   "name": "yeezycore/validator",
   "description": "POST/GET/CUSTOM array validator.",
   "license": "proprietary",
+  "type": "library",
   "version": "1.0.9",
   "authors": [
     {
