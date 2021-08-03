@@ -270,13 +270,25 @@ class field_validate{
 
             $this->input = $formetter_fn_name($this->input);
         }else{
-            $this->input = unformatphone($this->input);
+            $this->input = $this->unformatphone($this->input);
         }
 
 
         return $this;
     }
 
+    protected function unformatphone($phone){
+        $phone = preg_replace("/[^0-9A-Za-z]/", "", $phone);
+        $phone = trim($phone);
+        if($phone[0] == '+'){
+            unset($phone[0]);
+            $phone[1] = 7;
+        }
+        if($phone[0] == 8){
+            $phone[0] = 7;
+        }
+        return $phone;
+    }
 
 
     public function domain(){
