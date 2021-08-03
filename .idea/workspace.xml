@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="13539bf6-366a-4f67-bf68-4c95410e7fb9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path=".idea/" />
@@ -141,7 +141,7 @@
       <workItem from="1627989602936" duration="1295000" />
       <workItem from="1628003917538" duration="175000" />
       <workItem from="1628004108261" duration="177000" />
-      <workItem from="1628004293183" duration="575000" />
+      <workItem from="1628004293183" duration="658000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1628004747359</created>
@@ -150,11 +150,18 @@
       <option name="project" value="LOCAL" />
       <updated>1628004747359</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="init2">
+      <created>1628004878134</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1628004878134</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2222000" />
+    <option name="totallyTimeSpent" value="2305000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -195,7 +202,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init" />
-    <option name="LAST_COMMIT_MESSAGE" value="init" />
+    <MESSAGE value="init2" />
+    <option name="LAST_COMMIT_MESSAGE" value="init2" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/composer.json">
