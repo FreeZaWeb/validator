@@ -1,0 +1,19 @@
+{
+  "name": "freezaweb/validator",
+  "description": "POST/GET/CUSTOM array validator",
+  "license": "proprietary",
+  "version": "1.0.13",
+  "type": "library",
+  "authors": [
+    {
+      "name": "Max FreeZa",
+      "email": "freezaweb@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.4.5"
+  },
+  "autoload": {
+    "classmap": ["src"]
+  }
+}
