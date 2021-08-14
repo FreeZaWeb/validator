@@ -2,12 +2,12 @@
   "name": "freezaweb/validator",
   "description": "POST/GET/CUSTOM array validator",
   "license": "proprietary",
-  "version": "1.0.14",
+  "version": "1.0.17",
   "type": "library",
   "authors": [
     {
       "name": "Max FreeZa",
-      "email": "freezaweb@gmail.com",
+      "email": "freezaweb@gmail.com"
     }
   ],
   "require": {
