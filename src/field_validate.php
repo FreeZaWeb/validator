@@ -126,6 +126,20 @@ class field_validate{
         return $this;
     }
 
+    public function enum($params = null){
+
+        if(!is_array($params[0])){
+            $this->add_error('enum_param', 'not_array');
+        }else{
+            if(!in_array($this->input, $params[0])){
+                $this->add_error('enum', 'not correct value');
+            }
+        }
+
+        return $this;
+    }
+
+
     public function str(){
         $this->input = trim(htmlspecialchars($this->input));
         return $this;
