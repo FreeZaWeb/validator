@@ -9,6 +9,7 @@ class validator extends \stdClass {
     public      $errors = null;
     protected   $fields = [];
 
+
     ///////////////////////////////////////
 
     public static function ALL_POST(array $fields_rules){

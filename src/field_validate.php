@@ -117,6 +117,15 @@ class field_validate{
         return $this;
     }
 
+    public function arr(){
+
+        if(!is_array($this->input)){
+            $this->add_error('not_array', 'not_array');
+        }
+
+        return $this;
+    }
+
     public function str(){
         $this->input = trim(htmlspecialchars($this->input));
         return $this;
@@ -235,17 +244,32 @@ class field_validate{
         if(!$params){
             $this->add_error('min', 'not selected min chars in validator');
         }
-        if(strlen($this->input) < (int) $params[0]){
-            $this->add_error('min', 'str < min');
+
+        if(!is_array($this->input)){
+            if(strlen($this->input) < (int) $params[0]){
+                $this->add_error('min', 'str < min');
+            }
+        }else{
+            if(count($this->input) <= (int) $params[0]){
+                $this->add_error('min', 'array_items < min');
+            }
         }
+
+
     }
 
     public function max($params = null){
         if(!$params){
             $this->add_error('max', 'not selected min chars in validator');
         }
-        if(strlen($this->input) > (int) $params[0]){
-            $this->add_error('max', 'str > max');
+        if(!is_array($this->input)) {
+            if (strlen($this->input) > (int)$params[0]) {
+                $this->add_error('max', 'str > max');
+            }
+        }else{
+            if(count($this->input) >= (int) $params[0]){
+                $this->add_error('max', 'array_items > max');
+            }
         }
     }
 
