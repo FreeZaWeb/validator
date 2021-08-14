@@ -255,7 +255,6 @@ class field_validate{
             }
         }
 
-
     }
 
     public function max($params = null){
