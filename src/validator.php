@@ -31,6 +31,10 @@ class validator extends \stdClass {
 
     protected function __construct(array $fields_rules){
 
+        foreach($fields_rules as $f_name => $f_rule){
+            $this->$f_name = null;
+        }
+
         $this->fields_rules = $fields_rules;
 
         if(self::$method == 'POST') {
