@@ -25,9 +25,6 @@ class validator extends \stdClass {
     public static function CUSTOM(array $custom_fields, array $fields_rules){
         self::$method = 'CUSTOM';
 
-        dump($custom_fields);
-        dump($fields_rules);
-
         self::$custom_fields = $custom_fields;
         return new self($fields_rules);
 
