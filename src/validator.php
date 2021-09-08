@@ -36,8 +36,21 @@ class validator extends \stdClass {
     protected function __construct(array $fields_rules){
 
         foreach($fields_rules as $f_name => $f_rule){
+
+
             $this->fields[$f_name] = null;
             $this->$f_name = null;
+
+            foreach ($f_rule as $f_rule_item){
+
+                if(is_array($f_rule_item)){
+                    if(in_array('arr', $f_rule_item)){
+                        $this->fields[$f_name] = [];
+                        $this->$f_name = [];
+                    }
+                }
+            }
+
         }
 
         $this->fields_rules = $fields_rules;
@@ -76,11 +89,12 @@ class validator extends \stdClass {
 
     protected function _validate(){
 
+
+
         foreach($this->fields_rules as $key => $rules) {
 
             $method = self::$method;
             if($method == 'CUSTOM'){
-
                 $field = field_validate::$method(self::$custom_fields, $key);
             }else{
                 $field = field_validate::$method($key);
@@ -108,7 +122,6 @@ class validator extends \stdClass {
                     }else{
                         $this->errors[$key]['not_method_exist'] = $rule;
                     }
-
 
                 }
 
