@@ -2,7 +2,7 @@
   "name": "freezaweb/validator",
   "description": "POST/GET/CUSTOM array validator",
   "license": "proprietary",
-  "version": "1.0.24",
+  "version": "1.0.25",
   "type": "library",
   "authors": [
     {
