@@ -69,8 +69,6 @@ class field_validate{
 
     }
 
-
-
     public function req(){
         $this->required();
         return $this;
@@ -124,7 +122,7 @@ class field_validate{
 
             if($params[0]){
 
-                $sub_fields = field_validate::CUSTOM($this->input, $params[0]);
+                $sub_fields = validator::CUSTOM($this->input, [$params[0]]);
                 if($sub_fields->errors){
                     $this->add_error('array_error', 'not_'.$params[0]);
                 }
