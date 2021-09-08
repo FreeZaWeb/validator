@@ -117,11 +117,25 @@ class field_validate{
         return $this;
     }
 
-    public function arr(){
+    public function arr($params = null){
 
         if(!is_array($this->input)){
             $this->add_error('not_array', 'not_array');
+
+            if($params[0]){
+
+                $sub_fields = field_validate::CUSTOM($this->input, $params[0]);
+                if($sub_fields->errors){
+                    $this->add_error('array_error', 'not_'.$params[0]);
+                }
+
+            }
+
         }
+
+
+
+
 
         return $this;
     }
