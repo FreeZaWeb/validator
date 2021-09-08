@@ -124,7 +124,7 @@ class field_validate{
 
                 $rules = [];
                 foreach ($this->input as $index => $item){
-                    $rules[$index] = $params[0];
+                    $rules[$index] = [$params[0]];
                 }
 
                 $sub_fields = validator::CUSTOM($this->input, $rules);
