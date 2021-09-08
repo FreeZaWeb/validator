@@ -129,6 +129,7 @@ class field_validate{
                     }
                     return [$rules];
                 });
+
                 if($sub_fields->errors){
                     $this->add_error('array_error', 'not_'.$params[0]);
                 }
