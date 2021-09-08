@@ -10,6 +10,9 @@ class field_validate{
     protected $key = null;
     protected $input = null;
 
+    protected $arr_dump_input_base = null;
+
+
     protected $required = false;
     protected $not_empty = false;
 
@@ -119,30 +122,39 @@ class field_validate{
 
         if(!is_array($this->input)){
             $this->add_error('not_array', 'not_array');
+        }
 
-            if($params[0]){
+        if($params[0]){
 
-                $rules = [];
-                foreach ($this->input as $index => $item){
-                    $rules[$index] = [$params[0]];
-                }
+            $this->arr_dump_input_base = $this->input;
 
-                $sub_fields = validator::CUSTOM($this->input, $rules);
+            foreach($this->arr_dump_input_base as $item){
 
-                if($sub_fields->errors){
-                    $this->add_error('array_error', 'not_'.$params[0]);
+                $this->input = $item;
+
+                if(in_array($params[0], ['int', 'float', 'str', 'bool'])){
+
+                    $sub_fields = null;
+                    $rule_method_name = $params[0];
+                    $sub_fields = $this->$rule_method_name();
+
+                    if($sub_fields->errors){
+                        $this->add_error('array_error', 'not_'.$params[0]);
+                    }
+
+                }else{
+                    $this->add_error('array_error_type', 'array_validator_dont_have_rule_'.$params[0]);
                 }
 
             }
+            $this->input = $this->arr_dump_input_base;
+
 
         }
 
-
-
-
-
         return $this;
     }
+
 
     public function enum($params = null){
 
@@ -156,7 +168,6 @@ class field_validate{
 
         return $this;
     }
-
 
     public function str(){
         $this->input = trim(htmlspecialchars($this->input));
@@ -182,12 +193,11 @@ class field_validate{
 
     public function int(){
 
-        $this->input = filter_var((int)$this->input, FILTER_VALIDATE_INT);
-
         if(!is_int($this->input)){
             $this->add_error('int', 'not_int');
         }
 
+        $this->input = filter_var((int)$this->input, FILTER_VALIDATE_INT);
         return $this;
     }
 

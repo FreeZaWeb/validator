@@ -24,6 +24,10 @@ class validator extends \stdClass {
 
     public static function CUSTOM(array $custom_fields, array $fields_rules){
         self::$method = 'CUSTOM';
+
+        dump($custom_fields);
+        dump($fields_rules);
+
         self::$custom_fields = $custom_fields;
         return new self($fields_rules);
 
@@ -76,6 +80,7 @@ class validator extends \stdClass {
 
             $method = self::$method;
             if($method == 'CUSTOM'){
+
                 $field = field_validate::$method(self::$custom_fields, $key);
             }else{
                 $field = field_validate::$method($key);
@@ -95,9 +100,6 @@ class validator extends \stdClass {
                     }else{
                         $this->errors[$key]['not_method_exist'] = $rule_name;
                     }
-
-
-
 
                 }else{
 
