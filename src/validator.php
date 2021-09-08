@@ -45,8 +45,8 @@ class validator extends \stdClass {
 
                 if(is_array($f_rule_item)){
                     if(in_array('arr', $f_rule_item)){
-                        $this->fields[$f_name] = [];
-                        $this->$f_name = [];
+                        $this->fields[$f_name] = [0 => null];
+                        $this->$f_name = [0 => null];
                     }
                 }
             }
