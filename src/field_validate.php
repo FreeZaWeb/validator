@@ -352,12 +352,14 @@ class field_validate{
     protected function unformatphone($phone){
         $phone = preg_replace("/[^0-9A-Za-z]/", "", $phone);
         $phone = trim($phone);
-        if($phone[0] == '+'){
-            unset($phone[0]);
-            $phone[1] = 7;
-        }
-        if($phone[0] == 8){
-            $phone[0] = 7;
+        if(isset($phone[0])){
+            if($phone[0] == '+'){
+                unset($phone[0]);
+                $phone[1] = 7;
+            }
+            if($phone[0] == 8){
+                $phone[0] = 7;
+            }
         }
         return $phone;
     }
