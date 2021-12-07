@@ -125,7 +125,7 @@ class field_validate{
             $this->add_error('not_array', 'not_array');
         }
 
-        if($params[0]){
+        if(isset($params[0])){
 
             $this->arr_dump_input_base = $this->input;
 
