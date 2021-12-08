@@ -194,6 +194,10 @@ class field_validate{
 
     public function int(){
 
+        if(is_null($this->input)){
+            $this->input = 0;
+        }
+
         if(!is_numeric($this->input)){
             $this->add_error('int', 'not_numeric');
         }
