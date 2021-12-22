@@ -120,8 +120,11 @@ class field_validate{
 
     public function arr($params = null){
 
-        if(!is_array($this->input)){
+        if(empty($this->input)){
             $this->input = [];
+        }
+
+        if(!is_array($this->input)){
             $this->add_error('not_array', 'not_array');
         }
 
