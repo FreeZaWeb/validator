@@ -265,6 +265,10 @@ class field_validate{
     public function date($params = null){
         $this->format_to_string = true;
 
+        if(empty($this->input)){
+            return $this->input;
+        }
+
         if(isset($params[0])){
             $format = $params[0];
         }
@@ -284,6 +288,38 @@ class field_validate{
                     $this->add_error('format', 'false');
                 }
 
+            }
+        }else{
+            $this->add_error('format', 'false');
+        }
+
+
+
+        //$this->input = new \DateTime($this->input);
+        return $this;
+    }
+
+    public function time(){
+
+        if(empty($this->input)){
+            return $this->input;
+        }
+
+        $this->format_to_string = true;
+
+        $format = 'H:i';
+
+        $this->dateformat = $format;
+
+        $d = \DateTime::createFromFormat($format, $this->input);
+
+        if($d){
+            if($d && $d->format($format) == $this->input){
+                $this->input = $d;
+            }else{
+                if($this->required == true || $this->not_empty == true){
+                    $this->add_error('format', 'false');
+                }
             }
         }else{
             $this->add_error('format', 'false');
