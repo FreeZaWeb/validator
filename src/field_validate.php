@@ -307,7 +307,7 @@ class field_validate{
 
         $this->format_to_string = true;
 
-        $format = 'H:i';
+        $format = 'H:i:s';
 
         $this->dateformat = $format;
 
