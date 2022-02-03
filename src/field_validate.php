@@ -446,7 +446,7 @@ class field_validate{
 
     protected function _not_empty(){
 
-        if(empty($this->input)){
+        if(empty($this->input) && $this->input != '0'){
             $this->add_error('required', 'false');
         }
 
