@@ -35,7 +35,6 @@ class field_validate{
         return new self($key);
     }
 
-
     public static function CUSTOM($custom_fields_array, $key){
         self::$method = 'CUSTOM';
         self::$custom_fields = $custom_fields_array;
@@ -125,7 +124,14 @@ class field_validate{
         }
 
         if(!is_array($this->input)){
-            $this->add_error('not_array', 'not_array');
+
+            $this->input = $this->isJson($this->input);
+
+            if(!$this->input){
+                $this->add_error('not_array', 'not_array');
+                return $this;
+            }
+
         }
 
         if(isset($params[0])){
@@ -159,6 +165,14 @@ class field_validate{
         return $this;
     }
 
+    protected function isJson($string) {
+        if(!is_array($string)){
+            if (is_array(json_decode($string, true))){
+                return json_decode($string, true);
+            }
+        }
+        return false;
+    }
 
     public function enum($params = null){
 
@@ -187,9 +201,9 @@ class field_validate{
         }
 
         if($this->input == true){
-            $this->input = 'true';
+            $this->input = true;
         }else{
-            $this->input = 'false';
+            $this->input = false;
         }
 
         return $this;
@@ -264,6 +278,8 @@ class field_validate{
 
     public function date($params = null){
         $this->format_to_string = true;
+        $return_DateTime = false;
+
 
         if(empty($this->input)){
             return $this->input;
@@ -272,6 +288,7 @@ class field_validate{
         if(isset($params[0])){
             $format = $params[0];
         }
+
         if(empty($format)){
             $format = 'Y-m-d H:i:s';
         }
@@ -287,15 +304,11 @@ class field_validate{
                 if($this->required == true || $this->not_empty == true){
                     $this->add_error('format', 'false');
                 }
-
             }
         }else{
             $this->add_error('format', 'false');
         }
 
-
-
-        //$this->input = new \DateTime($this->input);
         return $this;
     }
 
@@ -340,6 +353,12 @@ class field_validate{
             $this->add_error('min', 'not selected min chars in validator');
         }
 
+        //todo refactoring
+        $arr = $this->isJson($this->input);
+        if($arr){
+            $this->input = $arr;
+        }
+
         if(!is_array($this->input)){
             if(strlen($this->input) < (int) $params[0]){
                 $this->add_error('min', 'str < min');
@@ -354,8 +373,15 @@ class field_validate{
 
     public function max($params = null){
         if(!$params){
-            $this->add_error('max', 'not selected min chars in validator');
+            $this->add_error('max', 'not selected max chars in validator');
         }
+
+        //todo refactoring
+        $arr = $this->isJson($this->input);
+        if($arr){
+            $this->input = $arr;
+        }
+
         if(!is_array($this->input)) {
             if (strlen($this->input) > (int)$params[0]) {
                 $this->add_error('max', 'str > max');
@@ -366,6 +392,40 @@ class field_validate{
             }
         }
     }
+
+
+    public function range($params = null){
+        if(!$params){
+            $this->add_error('range', 'not selected range min max in validator');
+        }
+        if(count($params) != 2){
+            $this->add_error('range', 'range need 2 params (min and max) in validator');
+        }
+
+        //todo refactoring
+        $arr = $this->isJson($this->input);
+        if($arr){
+            $this->input = $arr;
+        }
+
+        if(!is_array($this->input)) {
+            if (strlen($this->input) < (int)$params[0]) {
+                $this->add_error('range', 'str > min');
+            }
+            if (strlen($this->input) > (int)$params[1]) {
+                $this->add_error('range', 'str > max');
+            }
+        }else{
+            if(count($this->input) < (int) $params[0]){
+                $this->add_error('range', 'array_items > range min');
+            }
+            if(count($this->input) > (int) $params[1]){
+                $this->add_error('range', 'array_items > range max');
+            }
+        }
+    }
+
+
 
     public function url(){
         $this->input = filter_var($this->input, FILTER_VALIDATE_URL);
@@ -412,7 +472,6 @@ class field_validate{
     }
 
 
-
     public function domain(){
         $this->input = filter_var($this->input, FILTER_VALIDATE_DOMAIN, FILTER_FLAG_HOSTNAME);
         return $this;
@@ -427,8 +486,6 @@ class field_validate{
         $this->input = filter_var($this->input, FILTER_VALIDATE_MAC);
         return $this;
     }
-
-
 
     public function get_obj(){
 
