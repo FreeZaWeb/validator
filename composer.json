@@ -1,8 +1,8 @@
 {
   "name": "freezaweb/validator",
-  "description": "Quite simple, but at the same time a simple validation class. Can validate incoming POST/GET/custom array data.",
+  "description": "Quite simple, but at the same time a simple validation class. Can validate incoming POST/GET/custom array data",
   "license": "MIT",
-  "version": "1.2.1",
+  "version": "1.2.1.1",
   "type": "library",
   "authors": [
     {
